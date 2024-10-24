@@ -1,0 +1,30 @@
+billion:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    host: 47.100.60.247
+    port: 3306
+    database: csy_data
+    username: root
+    password: rys87tgD
+  redis:
+    host: localhost
+    port: 6379
+#    password: 123456
+    database: 10
+  wechat:
+    appid: xxxxxxxxxx
+    secret: xxxxxxxxxxx
+    mchid : 1561414331
+    mchSerialNo: 4B3B3DC35414AD50B1B755BAF8DE9CC7CF407606
+    privateKeyFilePath: D:\pay\apiclient_key.pem
+    apiV3Key: CZBK51236435wxpay435434323FFDuv3
+    weChatPayCertFilePath: D:\pay\wechatpay_166D96F876F45C7D07CE98952A96EC980368ACFC.pem
+    notifyUrl: https://58869fb.r2.cpolar.top/notify/paySuccess
+    refundNotifyUrl: https://58869fb.r2.cpolar.top/notify/refundSuccess
+  minio:
+    endpoint: http://127.0.0.1:19000
+    accessKey: 5RL6v4qf27eox2xUrmXR
+    secretKey: 75ELifz0cnobzu9UlxmFGXUcXeKlZB0lQUZl8GH3
+    bucketName: billion-supermarket
+  onnx:
+    device: cpu

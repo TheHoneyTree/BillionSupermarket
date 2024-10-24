@@ -1,0 +1,73 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+  datasource:
+    druid:
+      driver-class-name: ${billion.datasource.driver-class-name}
+      url: jdbc:mysql://${billion.datasource.host}:${billion.datasource.port}/${billion.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: ${billion.datasource.username}
+      password: ${billion.datasource.password}
+  redis:
+    host: ${billion.redis.host}
+    port: ${billion.redis.port}
+#    password: ${billion.redis.password}
+    database: ${billion.redis.database}
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+
+mybatis:
+  #mapper配置文件
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.billion.entity
+  configuration:
+    #开启驼峰命名
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com:
+      billion:
+        mapper: debug
+        service: info
+        controller: info
+
+billion:
+  jwt:
+    # 设置jwt签名加密时使用的秘钥
+    admin-secret-key: itcast
+    # 设置jwt过期时间
+    admin-ttl: 7200000
+    # 设置前端传递过来的令牌名称
+    admin-token-name: token
+    user-secret-key: itheima
+    user-ttl: 7200000
+    user-token-name: authentication
+  wechat:
+    appid: ${billion.wechat.appid}
+    secret: ${billion.wechat.secret}
+    mchid : ${billion.wechat.mchid}
+    mchSerialNo: ${billion.wechat.mchSerialNo}
+    privateKeyFilePath: ${billion.wechat.privateKeyFilePath}
+    apiV3Key: ${billion.wechat.apiV3Key}
+    weChatPayCertFilePath: ${billion.wechat.weChatPayCertFilePath}
+    notifyUrl: ${billion.wechat.notifyUrl}
+    refundNotifyUrl: ${billion.wechat.refundNotifyUrl}
+  shop:
+    address: 北京市海淀区上地十街10号
+  baidu:
+    ak: your-ak
+  minio:
+    endpoint: ${billion.minio.endpoint}
+    accessKey: ${billion.minio.accessKey}
+    secretKey: ${billion.minio.secretKey}
+    bucketName: ${billion.minio.bucketName}

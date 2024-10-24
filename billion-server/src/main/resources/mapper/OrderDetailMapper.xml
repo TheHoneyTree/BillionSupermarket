@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.billion.mapper.OrderDetailMapper">
+
+    <insert id="insertBatch">
+        insert into order_detail (name, image, order_id, dish_id, setmeal_id, dish_flavor, number, amount)
+            values
+        <foreach collection="orderDetailList" item="od" separator=",">
+            (#{od.name},#{od.image},#{od.orderId},#{od.dishId},#{od.setmealId},#{od.dishFlavor},#{od.number},#{od.amount})
+        </foreach>
+    </insert>
+
+    <select id="getRecentByUserId" resultType="Integer">
+        SELECT dish_id FROM (
+            SELECT * FROM (
+                SELECT id,order_time FROM orders WHERE user_id = 1
+            ) as a RIGHT JOIN (
+                SELECT order_id, dish_id FROM order_detail
+            ) as b ON a.id = b.order_id ORDER BY order_time DESC LIMIT 20
+        ) as subquery ORDER BY order_time;
+    </select>
+</mapper>

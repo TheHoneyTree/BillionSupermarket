@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "recommendation"
+version = "0.1.0"
+description = ""
+authors = ["vichayturen <1073931273@qq.com>"]
+license = "Apache 2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.10.14"
+torch = "^2.4.0"
+numpy = "^2.0.1"
+onnx = "^1.16.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
