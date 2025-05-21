@@ -18,7 +18,7 @@ public class Recommendation {
     public Recommendation(OnnxProperties onnxProperties) throws OrtException {
         this.onnxProperties = onnxProperties;
         this.env = OrtEnvironment.getEnvironment();
-        this.session = env.createSession("/mnt/user/model/bge/onnx/model.onnx", new OrtSession.SessionOptions());
+        this.session = env.createSession("data/model/model_quant.onnx", new OrtSession.SessionOptions());
     }
 
     public float[][] forward(long[][] inputs) {
