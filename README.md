@@ -44,6 +44,8 @@ docker run -itd --name minio -p 9000:9000 -p 9001:9001 -e MINIO_ROOT_USER="admin
 3. 创建accesskey和secretkey，复制到application.yml中。
 
 ### 2.4 前端工程
+把data/nginx/html目录下的文件复制到nginx/html目录下。
+将data/nginx/conf/nginx.conf中的location改成html保存的路径。
 进入nginx目录，运行：
 ```shell
 .\nginx
